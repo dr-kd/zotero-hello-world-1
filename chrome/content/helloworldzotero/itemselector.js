@@ -45,14 +45,8 @@ Zotero.ItemSelector = {
 	}
 	},	 
 
-	ZoteroPane: function() {
-	return (Components.classes["@mozilla.org/appshell/window-mediator;1"]
-		.getService(Components.interfaces.nsIWindowMediator)
-		.getMostRecentWindow("navigator:browser").ZoteroPane);
-	},
-	
 	GetSelectedItems: function() {
-	this.AlertItems(this.ZoteroPane().getSelectedItems());
+	this.AlertItems(Zotero.getActiveZoteroPane().getSelectedItems());
 	},
 
 	AlertItems: function(items) {
@@ -66,7 +60,7 @@ Zotero.ItemSelector = {
 	
 
 	GetCollectionItems: function() {
-	var collection= this.ZoteroPane().getSelectedCollection();
+	var collection= Zotero.getActiveZoteroPane().getSelectedCollection();
 	var items = collection.getChildItems();
 	this.AlertItems(items);
 	},
