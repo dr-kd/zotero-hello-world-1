@@ -26,14 +26,14 @@
 		<menuseparator/>
 		<menuitem label="Get Selected Items"
                           tooltiptext="Get Selected Items"
-                          oncommand="Zotero.ItemSelector.GetSelectedItems();"/>
+                          oncommand="Zotero.ItemSelector.getSelectedItems();"/>
 	</menupopup>         
   
 	<menupopup id="zotero-collectionmenu">
 		<menuseparator/>
 		<menuitem label="Get Items In Collection"
                           tooltiptext="Get Items in Collection"
-                          oncommand="Zotero.ItemSelector.GetCollectionItems();"/>
+                          oncommand="Zotero.ItemSelector.getCollectionItems();"/>
 	</menupopup>
 	
 	<menupopup id="zotero-tb-actions-popup">

@@ -45,11 +45,11 @@ Zotero.ItemSelector = {
 	}
 	},	 
 
-	GetSelectedItems: function() {
-	this.AlertItems(Zotero.getActiveZoteroPane().getSelectedItems());
+	getSelectedItems: function() {
+	this.alertItems(Zotero.getActiveZoteroPane().getSelectedItems());
 	},
 
-	AlertItems: function(items) {
+	alertItems: function(items) {
 	var results =  items.length + " items Selected\n"
 		for (i in items) {
 		var item = items[i]
@@ -59,13 +59,13 @@ Zotero.ItemSelector = {
 	},
 	
 
-	GetCollectionItems: function() {
+	getCollectionItems: function() {
 	var collection= Zotero.getActiveZoteroPane().getSelectedCollection();
 	var items = collection.getChildItems();
-	this.AlertItems(items);
+	this.alertItems(items);
 	},
 
-	HelloWorld: function() {
+	helloWorld: function() {
 	alert ("Hello World");
 	},
 
