@@ -1,17 +1,31 @@
 Zotero.ItemSelector = {
-	
-	getSelectedItems: function() {
+
+    mainWindow : window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)  
+        .getInterface(Components.interfaces.nsIWebNavigation)  
+        .QueryInterface(Components.interfaces.nsIDocShellTreeItem)  
+        .rootTreeItem  
+        .QueryInterface(Components.interfaces.nsIInterfaceRequestor)  
+        .getInterface(Components.interfaces.nsIDOMWindow),
+    
+    getSelectedItems: function() {
 	this.alertItems(Zotero.getActiveZoteroPane().getSelectedItems());
 	},
 
-	alertItems: function(items) {
+    alertItems: function(items) {
 	var results =  items.length + " items Selected\n"
-		for (i in items) {
+	    for (i in items) {
 		var item = items[i]
 		results = results +  "* " + item.getField('title') + "\n";
-		}
-	alert(results);
-	},
+	    }
+        var gBrowser = this.mainWindow.gBrowser;
+        var newTab = gBrowser.addTab("about:blank");
+        gBrowser.selectedTab = newTab;
+        newTab = gBrowser.getBrowserForTab(newTab);
+        newTab.addEventListener("load", function () {  
+            newTab.contentDocument.body.innerHTML = "<pre>" + results + "</pre>";  
+        }, true);  
+	// alert(results);
+    },
 	
 
 	getCollectionItems: function() {
